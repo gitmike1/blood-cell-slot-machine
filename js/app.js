@@ -1,10 +1,12 @@
 /*-------------------------------- Constants --------------------------------*/
-const cells = ['rbc','neutrophil', 'lymphocyte', 'monocyte', 'basophil', 'eosinophil', 'platelet', 'virus']
+const cellsArr = ['rbc','neutrophil', 'lymphocyte', 'monocyte', 'basophil', 'eosinophil', 'platelet', 'virus']
+console.log(cellsArr)
 
 
 /*-------------------------------- Variables --------------------------------*/
 let amount 
 let reels 
+let randomCell
 
 /*------------------------ Cached Element References ------------------------*/
 let winnings = document.querySelector("#winnings")
@@ -35,6 +37,12 @@ function updateCreditDisplay() {
   credits.innerText = "Credits = " + amount + "cc"
 }
 
+function generateCellIndex() {
+   randomCellIndex = Math.floor(Math.random() * cellsArr.length)
+  
+  }
+  generateCellIndex()
+  console.log(randomCellIndex)
 
 infuse.addEventListener('click', deposit) 
   function deposit(){
