@@ -16,14 +16,26 @@ let infuse = document.querySelector("#infuse")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
-
 /*-------------------------------- Functions --------------------------------*/
-init()
+// init()
 
-function init() {
-  reels = [null, null, null]
-  winnings = null
-  credits = null
-  render()
-}
+// function init() {
+//     reels = [null, null, null]
+//     winnings = null
+//     credits = null
+//     // render()
+//     console.log(init)
+//   }
+  
+  // function render(){
+  //   reels.forEach(function)
+  // }
+
+
+
+  infuse.addEventListener('click', deposit) 
+  let amount = 0
+    function deposit(){
+      credits.innerText = "Credits = " + (amount+=100) + "cc"
+    }
+    console.log(typeof amount)
