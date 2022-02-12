@@ -31,12 +31,15 @@ function init() {
   //   reels.forEach(function)
   // }
 
-
+function updateCreditDisplay() {
+  credits.innerText = "Credits = " + amount + "cc"
+}
 
 
 infuse.addEventListener('click', deposit) 
   function deposit(){
-    credits.innerText = "Credits = " + (amount+=100) + "cc"
+    amount+=100
+    updateCreditDisplay()
   }
     console.log(typeof amount)
 
@@ -48,6 +51,7 @@ play.addEventListener('click', gamble)
       credits.innerText = "Please Infuse some blood to play"
     } else {
       amount = amount - 100
+      updateCreditDisplay()
     }
 
 
