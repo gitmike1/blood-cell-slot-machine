@@ -4,7 +4,7 @@ const cells = ['rbc','neutrophil', 'lymphocyte', 'monocyte', 'basophil', 'eosino
 
 /*-------------------------------- Variables --------------------------------*/
 
-let reels = []
+let reels 
 
 /*------------------------ Cached Element References ------------------------*/
 let winnings = document.querySelector("#winnings")
@@ -19,3 +19,11 @@ let infuse = document.querySelector("#infuse")
 
 
 /*-------------------------------- Functions --------------------------------*/
+init()
+
+function init() {
+  reels = [null, null, null]
+  winnings = null
+  credits = null
+  render()
+}
