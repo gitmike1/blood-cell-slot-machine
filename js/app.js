@@ -3,7 +3,7 @@ const cells = ['rbc','neutrophil', 'lymphocyte', 'monocyte', 'basophil', 'eosino
 
 
 /*-------------------------------- Variables --------------------------------*/
-
+let amount 
 let reels 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -17,15 +17,15 @@ let infuse = document.querySelector("#infuse")
 /*----------------------------- Event Listeners -----------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-// init()
+init()
 
-// function init() {
-//     reels = [null, null, null]
-//     winnings = null
-//     credits = null
-//     // render()
-//     console.log(init)
-//   }
+function init() {
+    reels = [null, null, null]
+    winnings = null
+    amount = 0
+    // render()
+    console.log(init)
+  }
   
   // function render(){
   //   reels.forEach(function)
@@ -33,9 +33,24 @@ let infuse = document.querySelector("#infuse")
 
 
 
-  infuse.addEventListener('click', deposit) 
-  let amount = 0
-    function deposit(){
-      credits.innerText = "Credits = " + (amount+=100) + "cc"
-    }
+
+infuse.addEventListener('click', deposit) 
+  function deposit(){
+    credits.innerText = "Credits = " + (amount+=100) + "cc"
+  }
     console.log(typeof amount)
+
+
+play.addEventListener('click', gamble) 
+  function gamble(){
+
+    if (amount < 100) {
+      credits.innerText = "Please Infuse some blood to play"
+    } else {
+      amount = amount - 100
+    }
+
+
+
+  }
+  console.log(credits)
