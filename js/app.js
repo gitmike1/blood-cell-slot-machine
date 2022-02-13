@@ -14,7 +14,7 @@ let randomCell
 let winnings = document.querySelector("#winnings")
 let credits = document.querySelector("#credits")
 let play = document.querySelector("#play")
-let cashOut = document.querySelector("#cashOut")
+let extract = document.querySelector("#extract")
 let infuse = document.querySelector("#infuse")
 let wheel1 = document.querySelector(`#wheel1`)
 let wheel2 = document.querySelector(`#wheel2`)
@@ -30,6 +30,7 @@ function init() {
     reels = [null, null, null]
     cellprize = 0
     amount = 0
+    winnings.innerHTML = null
     // render()
     console.log(init)
   }
@@ -40,26 +41,21 @@ function init() {
 
 function updateCreditDisplay() {
   credits.innerText =  "Credits = " + amount   + "cc" 
-}
+  }
 
-// function generateCellIndex() {
-//    randomCellIndex = Math.floor(Math.random() * cellsArr.length)
-  
-//   }
-//   generateCellIndex()
-//   console.log(randomCellIndex)
+
 
 infuse.addEventListener('click', deposit) 
   function deposit(){
     amount+=100
     updateCreditDisplay()
   }
-    console.log(typeof amount)
+    
 
 
 play.addEventListener('click', gamble) 
   function gamble(){
-
+    winnings.innerHTML = null
     if (amount < 10) {
       credits.innerHTML = "Please Infuse some blood to play"
     } else {
@@ -88,18 +84,18 @@ play.addEventListener('click', gamble)
           
           updateCreditDisplay()
         }
-        
-
-
       
-
-
-
     }
-    
-    
-    
   }
   gamble()
   
-  
+  extract.addEventListener('click', cashOut) 
+  function cashOut(){
+    if (amount > 0){
+    winnings.innerText = `Congratulations! Total of ${amount}cc extracted!!`
+    amount = 0
+    updateCreditDisplay()
+    } else {
+      winnings.innerText = null
+  }
+  }  
