@@ -14,6 +14,9 @@ let credits = document.querySelector("#credits")
 let play = document.querySelector("#play")
 let cashOut = document.querySelector("#cashOut")
 let infuse = document.querySelector("#infuse")
+let wheel1 = document.querySelector(`#wheel1`)
+let wheel2 = document.querySelector(`#wheel2`)
+let wheel3 = document.querySelector(`#wheel3`)
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -37,12 +40,12 @@ function updateCreditDisplay() {
   credits.innerText = "Credits = " + amount + "cc"
 }
 
-function generateCellIndex() {
-   randomCellIndex = Math.floor(Math.random() * cellsArr.length)
+// function generateCellIndex() {
+//    randomCellIndex = Math.floor(Math.random() * cellsArr.length)
   
-  }
-  generateCellIndex()
-  console.log(randomCellIndex)
+//   }
+//   generateCellIndex()
+//   console.log(randomCellIndex)
 
 infuse.addEventListener('click', deposit) 
   function deposit(){
@@ -60,9 +63,27 @@ play.addEventListener('click', gamble)
     } else {
       amount = amount - 100
       updateCreditDisplay()
+
+      
+      wheel1.innerText = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+      wheel2.innerText = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+      wheel3.innerText = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+      
+      if (wheel1.innerHTML === wheel2.innerHTML && wheel2.innerHTML === wheel3.innerHTML) {
+        console.log("you win!!")
+      }
+
+
+
+
+
     }
-
-
-
+    
+    
+    
   }
-  console.log(credits)
+  gamble()
+  console.log(wheel1)
+  console.log(wheel2)
+  console.log(wheel3)
+  
