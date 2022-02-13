@@ -1,7 +1,7 @@
 /*-------------------------------- Constants --------------------------------*/
 // const cellsArr = [{cell : 'rbc', prize: 1000}, {cell : 'neutrophil', prize: 700}, {cell : 'lymphocyte', prize: 600}, {cell : 'monocyte', prize: 500}, {cell : 'basophil', prize: 400}, {cell : 'eosinophil', prize: 300}, {cell : 'platelet', prize: 200}, {cell : 'virus', prize: -500}]
 
-const cellsArr = [{cell : 'rbc', prize: 100}, {cell : 'virus', prize: -500}, ]
+const cellsArr = [{cell : 'rbc', prize: 1000}, {cell : 'neutrophil', prize: 700}, {cell : 'platelet', prize: 600}, ]
 
 
 /*-------------------------------- Variables --------------------------------*/
@@ -73,22 +73,28 @@ play.addEventListener('click', gamble)
       wheel1.innerHTML = randomCell1.cell
       wheel2.innerHTML = randomCell2.cell
       wheel3.innerHTML = randomCell3.cell
-      // console.log(randomCell1)
-      if (randomCell1 === randomCell2 && randomCell2 === randomCell3) {
-        
-          if (randomCell1.cell === "virus") {
-            winnings.innerText = `Oh no! a ${randomCell1.cell} has caused a ${randomCell1.prize}cc hemmorhage!!`
-          } else {
-            winnings.innerText = `Congratulations! 3 ${randomCell1.cell}s wins ${randomCell1.prize}!!`
-          }  
+      
+      let case1 = (randomCell1 === randomCell2 && randomCell2 === randomCell3)
+      let case2 = (randomCell1 === randomCell2 && randomCell3.cell === 'platelet')
+      let case3 = (randomCell1 === randomCell3 && randomCell2.cell === 'platelet')
+      let case4 = (randomCell2.cell === 'platelet' && randomCell3.cell === 'platelet')
 
-          amount =  amount + randomCell1.prize
-            if (amount < 0) {
-              amount = 0
-            }
+      if (case1 || case2 || case3 || case4)
+      {
+        
+        if (randomCell1.cell === "virus") {
+          winnings.innerText = `Oh no! a ${randomCell1.cell} has caused a ${randomCell1.prize}cc hemmorhage!!`
+        } else {
+          winnings.innerText = `Congratulations! 3 ${randomCell1.cell}s wins ${randomCell1.prize}!!`
+        }  
+
+        amount =  amount + randomCell1.prize
+          if (amount < 0) {
+            amount = 0
+          }
           
           
-          updateCreditDisplay()
+        updateCreditDisplay()
         }
       
     }
