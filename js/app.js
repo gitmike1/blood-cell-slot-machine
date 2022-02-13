@@ -6,6 +6,7 @@ console.log(cellsArr)
 
 /*-------------------------------- Variables --------------------------------*/
 let amount 
+let prize
 let reels 
 let randomCell
 
@@ -27,7 +28,7 @@ init()
 
 function init() {
     reels = [null, null, null]
-    winnings = null
+    cellprize = 0
     amount = 0
     // render()
     console.log(init)
@@ -38,10 +39,15 @@ function init() {
   // }
 
 function updateCreditDisplay() {
-  credits.innerText = "Credits = " + amount + "cc"
+  credits.innerText =  "Credits = " + amount   + "cc" 
 }
 
-
+// function generateCellIndex() {
+//    randomCellIndex = Math.floor(Math.random() * cellsArr.length)
+  
+//   }
+//   generateCellIndex()
+//   console.log(randomCellIndex)
 
 infuse.addEventListener('click', deposit) 
   function deposit(){
@@ -54,31 +60,38 @@ infuse.addEventListener('click', deposit)
 play.addEventListener('click', gamble) 
   function gamble(){
 
-    if (amount < 100) {
+    if (amount < 10) {
       credits.innerHTML = "Please Infuse some blood to play"
     } else {
-      amount = amount - 100
+      amount = amount - 10
       updateCreditDisplay()
 
-      
-      let randomCell1 = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+      let randomCell1  = cellsArr[Math.floor(Math.random() * cellsArr.length)]
 
-      let randomCell2 = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+      let randomCell2  = cellsArr[Math.floor(Math.random() * cellsArr.length)]
 
-      let randomCell3 = cellsArr[Math.floor(Math.random() * cellsArr.length)]
-      
+      let randomCell3  = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+
+
+
       wheel1.innerHTML = randomCell1.cell
       wheel2.innerHTML = randomCell2.cell
       wheel3.innerHTML = randomCell3.cell
-
-
-      if (randomCell1 === randomCell2 && randomCell2 === randomCell3.innerHTML) {
+      // console.log(randomCell1)
+      if (randomCell1 === randomCell2 && randomCell2 === randomCell3) {
         console.log("you win!!")
+          
+          winnings.innerText = `Congratulations! 3 ${randomCell1.cell}s wins ${randomCell1.prize}!!`
+
+          amount =  amount + randomCell1.prize
+          console.log(randomCell1.prize)
+          
+          updateCreditDisplay()
+        }
+        
 
 
-      }
-
-
+      
 
 
 
