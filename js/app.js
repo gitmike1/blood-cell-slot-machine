@@ -1,5 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
-const cellsArr = ['rbc','neutrophil', 'lymphocyte', 'monocyte', 'basophil', 'eosinophil', 'platelet', 'virus']
+const cellsArr = [{cell : 'rbc', prize: 1000}, {cell : 'neutrophil', prize: 700}, {cell : 'lymphocyte', prize: 600}, {cell : 'monocyte', prize: 500}, {cell : 'basophil', prize: 400}, {cell : 'eosinophil', prize: 300}, {cell : 'platelet', prize: 200}, {cell : 'virus', prize: -500}]
+
 console.log(cellsArr)
 
 
@@ -40,12 +41,7 @@ function updateCreditDisplay() {
   credits.innerText = "Credits = " + amount + "cc"
 }
 
-// function generateCellIndex() {
-//    randomCellIndex = Math.floor(Math.random() * cellsArr.length)
-  
-//   }
-//   generateCellIndex()
-//   console.log(randomCellIndex)
+
 
 infuse.addEventListener('click', deposit) 
   function deposit(){
@@ -59,18 +55,27 @@ play.addEventListener('click', gamble)
   function gamble(){
 
     if (amount < 100) {
-      credits.innerText = "Please Infuse some blood to play"
+      credits.innerHTML = "Please Infuse some blood to play"
     } else {
       amount = amount - 100
       updateCreditDisplay()
 
       
-      wheel1.innerText = cellsArr[Math.floor(Math.random() * cellsArr.length)]
-      wheel2.innerText = cellsArr[Math.floor(Math.random() * cellsArr.length)]
-      wheel3.innerText = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+      let randomCell1 = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+
+      let randomCell2 = cellsArr[Math.floor(Math.random() * cellsArr.length)]
+
+      let randomCell3 = cellsArr[Math.floor(Math.random() * cellsArr.length)]
       
-      if (wheel1.innerHTML === wheel2.innerHTML && wheel2.innerHTML === wheel3.innerHTML) {
+      wheel1.innerHTML = randomCell1.cell
+      wheel2.innerHTML = randomCell2.cell
+      wheel3.innerHTML = randomCell3.cell
+
+
+      if (randomCell1 === randomCell2 && randomCell2 === randomCell3.innerHTML) {
         console.log("you win!!")
+
+
       }
 
 
@@ -83,7 +88,5 @@ play.addEventListener('click', gamble)
     
   }
   gamble()
-  console.log(wheel1)
-  console.log(wheel2)
-  console.log(wheel3)
+  
   
